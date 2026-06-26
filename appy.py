@@ -30,7 +30,7 @@ if st.session_state.user_info is None:
             st.error("Credenciales inválidas. Intente de nuevo.")
 
     st.divider()
-    st.page_link("pages/register.py", label="¿No tienes cuenta? Regístrate aquí", icon="✍️")
+    st.markdown("[✍️ ¿No tienes cuenta? Regístrate aquí](./register)")
 
 # --- VISTA: ÁREA PROTEGIDA ---
 else:

@@ -23,9 +23,9 @@ if register_submit:
         success = st.session_state.auth_service.register(new_username, new_password, new_name)
         if success:
             st.success("Cuenta creada correctamente")
-            st.page_link("appy.py", label="Ir al login", icon="🔐")
+            st.markdown("[🔐 ¿Ya tienes cuenta? Inicia sesión](./appy)")
         else:
             st.error("El usuario ya existe o hubo un error")
 
 st.divider()
-st.page_link("appy.py", label="¿Ya tienes cuenta? Inicia sesión", icon="🔐")
+st.markdown("[🔐 ¿Ya tienes cuenta? Inicia sesión](./appy)")
