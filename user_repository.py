@@ -4,8 +4,8 @@ class UserRepository:
     def __init__(self):
         # Simulación de una base de datos de usuarios (En producción, las contraseñas estarían hasheadas)
         self._database = {
-            "admin": {"password": "12345", "name": "Administrador Principal"},
-            "user1": {"password": "securepass", "name": "Juan Pérez"}
+            "admin": {"password": "12345", "name": "Admi"},
+            "user1": {"password": "securepass", "name": "Juan"}
         }
 
     def get_user_by_username(self, username: str) -> dict | None:

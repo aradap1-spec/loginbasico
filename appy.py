@@ -13,7 +13,7 @@ if "user_info" not in st.session_state:
 
 # --- VISTA: LOGIN ---
 if st.session_state.user_info is None:
-    st.subheader("Control de Acceso")
+    st.subheader("Login Basico ")
     
     with st.form(key="login_form"):
         username = st.text_input("Usuario").strip()
