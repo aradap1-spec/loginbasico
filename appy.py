@@ -1,10 +1,9 @@
-# app.py
+# appy.py
 import streamlit as st
 from auth_service import AuthService
 
 st.set_page_config(page_title="Login Arquitectura Formal", page_icon="🔐")
 
-# Inyectamos el servicio de autenticación en la sesión para mantener la instancia
 if "auth_service" not in st.session_state:
     st.session_state.auth_service = AuthService()
 
@@ -13,7 +12,7 @@ if "user_info" not in st.session_state:
 
 # --- VISTA: LOGIN ---
 if st.session_state.user_info is None:
-    st.subheader("Login Basico ")
+    st.subheader("Login Basico")
     
     with st.form(key="login_form"):
         username = st.text_input("Usuario").strip()
@@ -21,7 +20,6 @@ if st.session_state.user_info is None:
         submit = st.form_submit_button("Iniciar Sesión")
         
     if submit:
-        # Llamamos a la lógica de negocio, la UI no decide si es correcto o no
         user_data = st.session_state.auth_service.login(username, password)
         
         if user_data:
@@ -30,6 +28,22 @@ if st.session_state.user_info is None:
             st.rerun()
         else:
             st.error("Credenciales inválidas. Intente de nuevo.")
+
+    st.divider()
+    st.subheader("Crear cuenta")
+
+    with st.form(key="register_form"):
+        new_username = st.text_input("Nuevo usuario").strip()
+        new_name = st.text_input("Nombre completo").strip()
+        new_password = st.text_input("Contraseña", type="password")
+        register_submit = st.form_submit_button("Registrarse")
+
+    if register_submit:
+        success = st.session_state.auth_service.register(new_username, new_password, new_name)
+        if success:
+            st.success("Usuario creado correctamente, ya puedes iniciar sesión")
+        else:
+            st.error("El usuario ya existe o hubo un error")
 
 # --- VISTA: ÁREA PROTEGIDA ---
 else:

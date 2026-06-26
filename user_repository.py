@@ -17,3 +17,14 @@ class UserRepository:
         if response.data:
             return response.data[0]
         return None
+
+    def create_user(self, username: str, password: str, name: str) -> bool:
+        try:
+            self.supabase.table("users").insert({
+                "username": username,
+                "password": password,
+                "name": name
+            }).execute()
+            return True
+        except Exception:
+            return False
