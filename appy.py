@@ -30,7 +30,7 @@ if st.session_state.user_info is None:
             st.error("Credenciales inválidas. Intente de nuevo.")
 
     st.divider()
-    if st.markdown("**¿No tienes cuenta?** Ve al menú de la izquierda → **register**"):
+    if st.button("¿No tienes cuenta? Regístrate aquí"):
      st.switch_page("pages/register.py")
 
 # --- VISTA: ÁREA PROTEGIDA ---
