@@ -12,7 +12,7 @@ if "user_info" not in st.session_state:
 
 # --- VISTA: LOGIN ---
 if st.session_state.user_info is None:
-    st.subheader("Login Basico")
+    st.subheader("🔐 Iniciar Sesión")
     
     with st.form(key="login_form"):
         username = st.text_input("Usuario").strip()
@@ -30,20 +30,7 @@ if st.session_state.user_info is None:
             st.error("Credenciales inválidas. Intente de nuevo.")
 
     st.divider()
-    st.subheader("Crear cuenta")
-
-    with st.form(key="register_form"):
-        new_username = st.text_input("Nuevo usuario").strip()
-        new_name = st.text_input("Nombre completo").strip()
-        new_password = st.text_input("Contraseña", type="password")
-        register_submit = st.form_submit_button("Registrarse")
-
-    if register_submit:
-        success = st.session_state.auth_service.register(new_username, new_password, new_name)
-        if success:
-            st.success("Usuario creado correctamente, ya puedes iniciar sesión")
-        else:
-            st.error("El usuario ya existe o hubo un error")
+    st.page_link("pages/register.py", label="¿No tienes cuenta? Regístrate aquí", icon="✍️")
 
 # --- VISTA: ÁREA PROTEGIDA ---
 else:
